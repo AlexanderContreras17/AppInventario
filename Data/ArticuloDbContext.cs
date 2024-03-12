@@ -36,6 +36,10 @@ namespace AppInventario.Data
                 command.CommandText = @"INSERT INTO articulos
                                            (descripcion, precio, existencia)
                                             values( $descripcion, $precio, $existencia)";
+                command.Parameters.AddWithValue("$descripcion", articulo.Descripcion);
+                command.Parameters.AddWithValue("$precio", articulo.Precio);
+                command.Parameters.AddWithValue("$existencia", articulo.Existencia);
+                await command.ExecuteNonQueryAsync();
             }
         }
     }
